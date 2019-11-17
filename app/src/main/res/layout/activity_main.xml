@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:padding="@dimen/activity_padding">
+
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help_text"
+        android:textSize="20sp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        />
+
+
+    <RelativeLayout
+        android:background="@drawable/result_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+
+        <ImageButton
+            android:id="@+id/buttonCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_content_copy_black_24dp"
+
+            android:padding="@dimen/button_paddig"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+
+        <TextView
+            android:id="@+id/result_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Hello World!"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/buttonCopy"
+            style="@style/ResultTextAppearance"
+            android:layout_alignTop="@+id/buttonCopy"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/quality"
+            android:layout_width="@dimen/indicatio_width"
+            android:layout_height="@dimen/indicator_height"
+            android:src="@drawable/quality_indicator"
+            android:layout_below="@id/result_password"/>
+
+    </RelativeLayout>
+
+
+
+
+    <EditText
+        android:id="@+id/source_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:text="Йцуввыы"
+        android:hint="@string/hint_password" />
+
+
+    <CheckBox
+        android:id="@+id/check_uppercase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_uppercase"/>
+
+
+
+</LinearLayout>

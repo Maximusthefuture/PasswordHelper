@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="margin_result">16dp</dimen>
+    <dimen name="button_paddig">8dp</dimen>
+    <dimen name="result_stroke_radius">8dp</dimen>
+    <dimen name="result_stroke_width">4dp</dimen>
+    <dimen name="indicatio_width">128dp</dimen>
+    <dimen name="indicator_height">64dp</dimen>
+</resources>

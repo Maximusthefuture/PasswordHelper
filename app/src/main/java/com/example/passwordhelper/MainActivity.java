@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,16 +23,19 @@ public class MainActivity extends Activity {
     private View mButtonCopy;
     private ImageView mQuality;
     private TextView mQualityTextView;
+    private SeekBar mPasswordLengthBar;
+    private TextView mPasswordLength;
     //Базовый класс
     private CompoundButton checkUppercase;
+    private CompoundButton checkNumbers;
+    private CompoundButton checkSpecialSymbols;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helper = new PasswordsHelper(getResources().getStringArray(R.array.russian), getResources().getStringArray(R.array.english));
-//        helper = new PasswordsHelper();
+        helper = new PasswordsHelper();
 
         mResultTextView = findViewById(R.id.result_password);
         mSourceTextView = findViewById(R.id.source_text);
@@ -39,10 +43,42 @@ public class MainActivity extends Activity {
         mButtonCopy.setEnabled(false);
         mQuality = findViewById(R.id.quality);
         checkUppercase = findViewById(R.id.check_uppercase);
+        mQualityTextView = findViewById(R.id.quality_tv);
+        mPasswordLengthBar = findViewById(R.id.password_length);
+        mPasswordLength = findViewById(R.id.tv_length);
+        checkUppercase = findViewById(R.id.check_uppercase);
+        checkNumbers = findViewById(R.id.check_numbers);
+        checkSpecialSymbols = findViewById(R.id.check_special_symbols);
 
-        //Написать все буквы через HashMap<String, String>
-//        Дописать все буквы
 
+        checkUppercase.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(MainActivity.this, isChecked + "", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mPasswordLengthBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                for (int i = 0; i < 20; i++) {
+                    int total = i + progress;
+
+                    String symbols = getResources().getQuantityString(R.plurals.symbols_quantity, i, progress, progress, total);
+                    mPasswordLength.setText(symbols);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         mButtonCopy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +105,7 @@ public class MainActivity extends Activity {
                 mButtonCopy.setEnabled(charSequence.length() > 0);
                 int quality = helper.getQuality(charSequence);
                 mQuality.setImageLevel(quality * 1000);
+                mQualityTextView.setText(getResources().getStringArray(R.array.qualities)[quality]);
 
             }
 
@@ -77,7 +114,6 @@ public class MainActivity extends Activity {
 
             }
         });
-
 
     }
 }

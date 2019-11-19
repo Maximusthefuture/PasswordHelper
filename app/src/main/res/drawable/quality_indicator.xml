@@ -2,27 +2,28 @@
 <clip xmlns:android="http://schemas.android.com/apk/res/android">
 
     <level-list>
+        <item android:maxLevel="3999">
+            <shape>
+                <solid android:color="#F44336" />
+            </shape>
+
+        </item>
+
         <item
-            android:maxLevel="3999">
-            <shape>
-                <solid android:color="#F44336"/>
-            </shape>
-
-        </item>
-
-        <item android:minLevel="4000" android:maxLevel="7999">
-
+            android:maxLevel="7999"
+            android:minLevel="4000">
             <shape>
 
-                <solid android:color="#FFC107"/>
+                <solid android:color="#FFC107" />
             </shape>
         </item>
 
-
-        <item android:minLevel="8000" android:maxLevel="10000">
+        <item
+            android:maxLevel="10000"
+            android:minLevel="8000">
 
             <shape>
-                <solid android:color="@android:color/holo_green_dark"/>
+                <solid android:color="@android:color/holo_green_dark" />
             </shape>
         </item>
 

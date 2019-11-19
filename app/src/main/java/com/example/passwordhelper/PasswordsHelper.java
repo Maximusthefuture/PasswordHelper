@@ -1,17 +1,16 @@
 package com.example.passwordhelper;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PasswordsHelper {
 
-    private String[] mRussians;
-    private String[] mLatin;
+    //    private final String[] mRussians;
+//    private final String[] mLatin;
+//    String[] russians, String[] latin
     private HashMap<String, String> alphabet;
 
-    public PasswordsHelper(String[] mRussians, String[] mLatin) {
-//        if (mRussians.length != mLatin.length) {
-//            throw new IllegalArgumentException();
-//        }
+    public PasswordsHelper() {
         alphabet = new HashMap<>();
         alphabet.put("й","q");
         alphabet.put("ц","w");
@@ -39,68 +38,52 @@ public class PasswordsHelper {
         alphabet.put("и","b");
         alphabet.put("т","n");
         alphabet.put("ь","m");
-        this.mRussians = mRussians;
-        this.mLatin = mLatin;
 
     }
 
-    public String convert(CharSequence source) {
+//    public String convert(CharSequence source) {
+//
+//        StringBuilder result = new StringBuilder();
+//
+//        for (int i = 0; i < source.length(); i++) {
+//            char c = source.charAt(i);
+//            String key = String.valueOf(Character.toLowerCase(c));
+//
+//            for (int j = 0; j < mRussians.length; j++) {
+//                if (key.equals(mRussians[j])) {
+//                    result.append(Character.isUpperCase(c)? mLatin[j].toUpperCase() : mLatin[j]);
+//                }
+//            }
+//            if (result.length() <= i) {
+//                result.append(c);
+//            }
+//        }
+//        return result.toString();
+//    }
+
+    public String convertWithHashMap(CharSequence source) {
 
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < source.length(); i++) {
             char c = source.charAt(i);
             String key = String.valueOf(Character.toLowerCase(c));
-
-            for (int j = 0; j < mRussians.length; j++) {
-                if (key.equals(mRussians[j])) {
-                    result.append(Character.isUpperCase(c)? mLatin[i].toUpperCase() : mLatin[i]);
+            for (Map.Entry<String, String> entry : alphabet.entrySet()) {
+                if (key.equals(entry.getKey())) {
+                    result.append(Character.isUpperCase(c) ? entry.getValue().toUpperCase() : entry.getValue());
                 }
             }
             if (result.length() <= i) {
                 result.append(c);
             }
         }
+
         return result.toString();
     }
-
-    public String convertWithHashMap(CharSequence source) {
-//        if (alphabet.keySet().size() != alphabet.values().size()) {
-//            throw new IllegalArgumentException();
-//        }
-
-    //Оставить такую же логику?
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < source.length(); i++) {
-            char c = source.charAt(i);
-            String key = String.valueOf(Character.toLowerCase(c));
-
-
-            for (String s : alphabet.keySet()) {
-                for (int j = 0; j < s.length(); j++) {
-                    if (key.equals(s)) {
-                        for (String value : alphabet.values()) {
-                            result.append(Character.isUpperCase(c) ? alphabet.get(value).toUpperCase(): alphabet.get(j));
-
-                        }
-                        }
-                }
-                if (result.length() <= i) {
-                    result.append(c);
-                }
-
-            }
-        }
-        return result.toString();
-    }
-
-
 
     public int getQuality(CharSequence password) {
-        Math.min();
+        return Math.min(password.length(), 10);
+
     }
 }
 
-
-//Drawable

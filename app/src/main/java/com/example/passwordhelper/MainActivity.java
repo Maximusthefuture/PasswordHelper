@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +30,8 @@ public class MainActivity extends Activity {
     private CompoundButton checkUppercase;
     private CompoundButton checkNumbers;
     private CompoundButton checkSpecialSymbols;
+    private Button generatePasswordButton;
+    private TextView generatedPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class MainActivity extends Activity {
         checkUppercase = findViewById(R.id.check_uppercase);
         checkNumbers = findViewById(R.id.check_numbers);
         checkSpecialSymbols = findViewById(R.id.check_special_symbols);
+        generatePasswordButton = findViewById(R.id.generate_password_button);
+        generatedPassword = findViewById(R.id.password);
 
 
         checkUppercase.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -61,12 +66,19 @@ public class MainActivity extends Activity {
         mPasswordLengthBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                for (int i = 0; i < 20; i++) {
+                int i = 0;
+                int step = 2;
+                //?
+                if (progress % step == 1) {
+                    i++;
+                }
                     int total = i + progress;
 
-                    String symbols = getResources().getQuantityString(R.plurals.symbols_quantity, i, progress, progress, total);
+                String symbols = getResources().getQuantityString(
+                        R.plurals.symbols_quantity, i, i, progress, total,
+                        getResources().getQuantityString(R.plurals.symbols_more, progress, progress),
+                        getResources().getQuantityString(R.plurals.symbols_more, total, total));
                     mPasswordLength.setText(symbols);
-                }
             }
 
             @Override
@@ -111,6 +123,15 @@ public class MainActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        generatePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                generatedPassword.setText(helper.generatePassword(6));
+
 
             }
         });

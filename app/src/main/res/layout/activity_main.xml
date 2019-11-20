@@ -7,13 +7,11 @@
     android:padding="@dimen/activity_padding"
     tools:context=".MainActivity">
 
-
     <TextView
+        style="@style/TextAppearanceAll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/help_text"
-        style="@style/TextAppearanceAll" />
-
+        android:text="@string/help_text" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +19,6 @@
         android:layout_gravity="center_vertical"
         android:background="@drawable/result_background"
         android:orientation="horizontal">
-
 
         <ImageButton
             android:id="@+id/buttonCopy"
@@ -43,13 +40,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/buttonCopy"
-            tools:text="Hello World!"
-
-            />
-
-
+            tools:text="Hello World!" />
     </RelativeLayout>
-
 
     <EditText
         android:id="@+id/source_text"
@@ -63,14 +55,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:id="@+id/quality"
             android:layout_width="@dimen/indicatio_width"
             android:layout_height="@dimen/indicator_height"
             android:layout_alignParentEnd="true"
             android:src="@drawable/quality_indicator" />
-
 
         <TextView
             android:id="@+id/quality_tv"
@@ -80,15 +70,14 @@
 
     </RelativeLayout>
 
-
     <TextView
+        style="@style/TextAppearanceAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/generate_new_password"
         android:layout_gravity="center_horizontal"
-        style="@style/TextAppearanceAll"
+        android:layout_marginTop="50dp"
         android:paddingBottom="@dimen/activity_padding"
-        android:layout_marginTop="50dp" />
+        android:text="@string/generate_new_password" />
 
     <CheckBox
         android:id="@+id/check_uppercase"
@@ -104,7 +93,6 @@
         android:layout_marginBottom="8dp"
         android:text="@string/numbers" />
 
-
     <CheckBox
         android:id="@+id/check_special_symbols"
         android:layout_width="match_parent"
@@ -112,13 +100,12 @@
         android:layout_marginBottom="@dimen/marginAll"
         android:text="@string/special_char" />
 
-
     <SeekBar
         android:id="@+id/password_length"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:max="20" />
+        android:max="10" />
 
     <TextView
         android:id="@+id/tv_length"
@@ -126,15 +113,13 @@
         android:layout_height="wrap_content"
         tools:text="Длина:8 + 1 символ = 9 символов" />
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/result_background"
         android:layout_marginBottom="@dimen/marginAll"
+        android:background="@drawable/result_background"
         android:orientation="horizontal">
-
 
         <ImageButton
             android:id="@+id/button_copy_new_password"
@@ -145,7 +130,6 @@
             android:padding="@dimen/button_paddig"
             android:src="@drawable/ic_content_copy_black_24dp" />
 
-
         <TextView
             android:id="@+id/password"
             style="@style/ResultTextAppearance"
@@ -155,18 +139,18 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/button_copy_new_password"
+            android:gravity="center_horizontal"
             tools:text="Hello World!" />
-
 
     </RelativeLayout>
 
     <Button
+        android:id="@+id/generate_password_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/generate"
         android:background="@drawable/button"
+        android:text="@string/generate"
         android:textColor="@color/button_text" />
     <!--        android:background="@color/button_text"-->
-
 
 </LinearLayout>

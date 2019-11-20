@@ -5,9 +5,6 @@ import java.util.Map;
 
 public class PasswordsHelper {
 
-    //    private final String[] mRussians;
-//    private final String[] mLatin;
-//    String[] russians, String[] latin
     private HashMap<String, String> alphabet;
 
     public PasswordsHelper() {
@@ -41,26 +38,6 @@ public class PasswordsHelper {
 
     }
 
-//    public String convert(CharSequence source) {
-//
-//        StringBuilder result = new StringBuilder();
-//
-//        for (int i = 0; i < source.length(); i++) {
-//            char c = source.charAt(i);
-//            String key = String.valueOf(Character.toLowerCase(c));
-//
-//            for (int j = 0; j < mRussians.length; j++) {
-//                if (key.equals(mRussians[j])) {
-//                    result.append(Character.isUpperCase(c)? mLatin[j].toUpperCase() : mLatin[j]);
-//                }
-//            }
-//            if (result.length() <= i) {
-//                result.append(c);
-//            }
-//        }
-//        return result.toString();
-//    }
-
     public String convertWithHashMap(CharSequence source) {
 
         StringBuilder result = new StringBuilder();
@@ -77,13 +54,23 @@ public class PasswordsHelper {
                 result.append(c);
             }
         }
-
         return result.toString();
     }
 
     public int getQuality(CharSequence password) {
         return Math.min(password.length(), 10);
+    }
 
+    public String generatePassword(int n) {
+        String randomPassword = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+        StringBuilder builder = new StringBuilder(n);
+        for (int i = 0; i < n; i++) {
+            int index = (int) (randomPassword.length() * Math.random());
+            builder.append(randomPassword.charAt(index));
+        }
+        return builder.toString();
     }
 }
 

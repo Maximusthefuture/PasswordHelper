@@ -12,8 +12,6 @@
     <string name="numbers">Цифры</string>
     <string name="generate">Генерировать</string>
 
-    <!--quantity строка-->
-    <!--<plurals name=""-->
 
     <string-array name="qualities">
         <item>@string/quality_hint</item>
@@ -27,39 +25,17 @@
         <item>7</item>
         <item>8</item>
         <item>Отличный</item>
-
     </string-array>
 
     <plurals name="symbols_quantity">
-        <item quantity="one">Длина: %1$d + %2$d = %3$d символ</item>
-        <item quantity="other">Длина: %1$d + %2$d = %3$d символов</item>
-
+        <item quantity="other">Длина: %1$d + %2$d %4$s = %3$d %5$s</item>
     </plurals>
 
-
-    <string-array name="russian">
-        <item>й</item>
-        <item>ц</item>
-        <item>у</item>
-        <item>к</item>
-        <item>е</item>
-        <item>н</item>
-        <item>г</item>
-        <item>ш</item>
-        <item>ш</item>
-        <item>з</item>
-    </string-array>
-
-    <string-array name="english">
-        <item>q</item>
-        <item>w</item>
-        <item>e</item>
-        <item>r</item>
-        <item>t</item>
-        <item>y</item>
-        <item>u</item>
-        <item>i</item>
-        <item>o</item>
-        <item>p</item>
-    </string-array>
+    <plurals name="symbols_more">
+        <item quantity="one">символ</item>
+        <item quantity="two">символа</item>
+        <item quantity="few">символа</item>
+        <item quantity="many">символов</item>
+        <item quantity="other">символов</item>
+    </plurals>
 </resources>

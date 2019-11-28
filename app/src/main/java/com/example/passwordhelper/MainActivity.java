@@ -59,9 +59,36 @@ public class MainActivity extends Activity {
         checkUppercase.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(MainActivity.this, isChecked + "", Toast.LENGTH_SHORT).show();
+                if (isChecked) {
+                    helper.generatePassword(6, true, false, false);
+                } else {
+                    helper.generatePassword(6, false, false, false);
+                }
+
             }
         });
+
+        checkNumbers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    helper.generatePassword(6, false, true, false);
+                } else {
+                    helper.generatePassword(0, false, false, false);
+                }
+            }
+        });
+
+        checkSpecialSymbols.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                helper.generateSpecialSymbols();
+                if (isChecked) {
+                    helper.generatePassword(6, false, false, true);
+                }
+            }
+        });
+
 
         mPasswordLengthBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -130,7 +157,19 @@ public class MainActivity extends Activity {
         generatePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generatedPassword.setText(helper.generatePassword(6));
+                if (checkUppercase.isChecked()) {
+                    generatedPassword.setText(helper.generatePassword(6, true, false, false));
+                } else if (checkUppercase.isChecked() && checkNumbers.isChecked()) {
+                    generatedPassword.setText(helper.generatePassword(6, true, true, false));
+                } else if (checkNumbers.isChecked()) {
+                    generatedPassword.setText(helper.generatePassword(6, false, true, false));
+
+                } else if (checkSpecialSymbols.isChecked()) {
+                    generatedPassword.setText(helper.generatePassword(6, false, false, true));
+
+                } else {
+                    generatedPassword.setText(helper.generatePassword(6, false, false, false));
+                }
 
 
             }

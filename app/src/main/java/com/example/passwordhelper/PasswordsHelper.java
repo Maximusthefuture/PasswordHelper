@@ -1,5 +1,7 @@
 package com.example.passwordhelper;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,16 +63,44 @@ public class PasswordsHelper {
         return Math.min(password.length(), 10);
     }
 
-    public String generatePassword(int n) {
-        String randomPassword = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                + "0123456789"
-                + "abcdefghijklmnopqrstuvxyz";
+    public String generatePassword(int n, boolean isUpperCase, boolean isNumber, boolean iSpecial) {   //, boolean isNumber, boolean isSpecial
+        String randomPassword = "abcdefghijklmnopqrstuvxyz";
+        String numbers = "0123456789";
+        String specialSymbols = "[]{}()<>*+-=!?^$|";
+        int random;
+
+//        String randomUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789";
         StringBuilder builder = new StringBuilder(n);
         for (int i = 0; i < n; i++) {
             int index = (int) (randomPassword.length() * Math.random());
-            builder.append(randomPassword.charAt(index));
+
+            if (isUpperCase) {
+                String upper = randomPassword.toUpperCase();
+                builder.append(upper.charAt(index));
+            } else if (isNumber) {
+                random = (int) (10 * Math.random());
+                builder.append(numbers.charAt(random));
+                builder.append(randomPassword.charAt(index));
+//            } else if (isNumber && isUpperCase){
+//                int random = (int) (10 * Math.random());
+//                builder.append(numbers.charAt(random));
+//                builder.append(randomPassword.charAt(index)).toString().toUpperCase();
+            } else if (iSpecial) {
+                random = (int) (10 * Math.random());
+                builder.append(specialSymbols.charAt(random));
+                builder.append(randomPassword.charAt(index));
+            } else {
+                builder.append(randomPassword.charAt(index));
+                Log.d("PasswordHelper", isUpperCase + "");
+            }
         }
+
         return builder.toString();
+    }
+
+
+    public void generateSpecialSymbols(StringBuilder builder, boolean isSpecial) {
+
     }
 }
 

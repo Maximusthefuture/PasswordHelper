@@ -11,32 +11,32 @@ public class PasswordsHelper {
 
     public PasswordsHelper() {
         alphabet = new HashMap<>();
-        alphabet.put("й","q");
-        alphabet.put("ц","w");
-        alphabet.put("у","e");
-        alphabet.put("к","r");
-        alphabet.put("е","t");
-        alphabet.put("н","y");
-        alphabet.put("г","u");
-        alphabet.put("ш","i");
-        alphabet.put("щ","o");
-        alphabet.put("з","p");
-        alphabet.put("ф","a");
-        alphabet.put("ы","s");
-        alphabet.put("в","d");
-        alphabet.put("а","f");
-        alphabet.put("п","g");
-        alphabet.put("р","h");
-        alphabet.put("о","j");
-        alphabet.put("л","k");
-        alphabet.put("д","l");
-        alphabet.put("я","z");
-        alphabet.put("ч","x");
-        alphabet.put("с","c");
-        alphabet.put("м","v");
-        alphabet.put("и","b");
-        alphabet.put("т","n");
-        alphabet.put("ь","m");
+        alphabet.put("й", "q");
+        alphabet.put("ц", "w");
+        alphabet.put("у", "e");
+        alphabet.put("к", "r");
+        alphabet.put("е", "t");
+        alphabet.put("н", "y");
+        alphabet.put("г", "u");
+        alphabet.put("ш", "i");
+        alphabet.put("щ", "o");
+        alphabet.put("з", "p");
+        alphabet.put("ф", "a");
+        alphabet.put("ы", "s");
+        alphabet.put("в", "d");
+        alphabet.put("а", "f");
+        alphabet.put("п", "g");
+        alphabet.put("р", "h");
+        alphabet.put("о", "j");
+        alphabet.put("л", "k");
+        alphabet.put("д", "l");
+        alphabet.put("я", "z");
+        alphabet.put("ч", "x");
+        alphabet.put("с", "c");
+        alphabet.put("м", "v");
+        alphabet.put("и", "b");
+        alphabet.put("т", "n");
+        alphabet.put("ь", "m");
 
     }
 
@@ -97,7 +97,6 @@ public class PasswordsHelper {
 
         return builder.toString();
     }
-
 
     public void generateSpecialSymbols(StringBuilder builder, boolean isSpecial) {
 

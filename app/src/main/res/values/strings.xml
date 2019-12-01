@@ -4,6 +4,7 @@
     <string name="help_text">Введите пароль в русской расскладки</string>
     <string name="hint_password">(русский пароль)</string>
     <string name="clipboard_title">Пароль</string>
+
     <string name="copy_text">Текст скопирован в буфер обмена</string>
     <string name="check_uppercase">Заглавные</string>
     <string name="quality_hint">Качество</string>
@@ -11,6 +12,7 @@
     <string name="special_char">Cпецсимволы</string>
     <string name="numbers">Цифры</string>
     <string name="generate">Генерировать</string>
+    <string name="new_password">Новый пароль</string>
 
 
     <string-array name="qualities">

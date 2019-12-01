@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -32,28 +33,28 @@ public class MainActivity extends Activity {
     private CompoundButton checkSpecialSymbols;
     private Button generatePasswordButton;
     private TextView generatedPassword;
+    private ImageButton copyNewPassword;
+    private TextView newPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         helper = new PasswordsHelper();
+        init();
+        initListeners();
 
-        mResultTextView = findViewById(R.id.result_password);
-        mSourceTextView = findViewById(R.id.source_text);
-        mButtonCopy = findViewById(R.id.buttonCopy);
-        mButtonCopy.setEnabled(false);
-        mQuality = findViewById(R.id.quality);
-        checkUppercase = findViewById(R.id.check_uppercase);
-        mQualityTextView = findViewById(R.id.quality_tv);
-        mPasswordLengthBar = findViewById(R.id.password_length);
-        mPasswordLength = findViewById(R.id.tv_length);
-        checkUppercase = findViewById(R.id.check_uppercase);
-        checkNumbers = findViewById(R.id.check_numbers);
-        checkSpecialSymbols = findViewById(R.id.check_special_symbols);
-        generatePasswordButton = findViewById(R.id.generate_password_button);
-        generatedPassword = findViewById(R.id.password);
+    }
+
+    private void initListeners() {
+        copyNewPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                manager.setPrimaryClip(ClipData.newPlainText(MainActivity.this.getString(R.string.new_password), newPassword.getText()));
+                Toast.makeText(MainActivity.this, R.string.copy_text, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         checkUppercase.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -99,13 +100,13 @@ public class MainActivity extends Activity {
                 if (progress % step == 1) {
                     i++;
                 }
-                    int total = i + progress;
+                int total = i + progress;
 
                 String symbols = getResources().getQuantityString(
                         R.plurals.symbols_quantity, i, i, progress, total,
                         getResources().getQuantityString(R.plurals.symbols_more, progress, progress),
                         getResources().getQuantityString(R.plurals.symbols_more, total, total));
-                    mPasswordLength.setText(symbols);
+                mPasswordLength.setText(symbols);
             }
 
             @Override
@@ -123,9 +124,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-
                 manager.setPrimaryClip(ClipData.newPlainText(MainActivity.this.getString(R.string.clipboard_title), mResultTextView.getText()));
-
                 Toast.makeText(MainActivity.this, R.string.copy_text, Toast.LENGTH_SHORT).show();
             }
 
@@ -174,6 +173,24 @@ public class MainActivity extends Activity {
 
             }
         });
+    }
 
+    private void init() {
+        mResultTextView = findViewById(R.id.result_password);
+        mSourceTextView = findViewById(R.id.source_text);
+        mButtonCopy = findViewById(R.id.buttonCopy);
+        mButtonCopy.setEnabled(false);
+        mQuality = findViewById(R.id.quality);
+        checkUppercase = findViewById(R.id.check_uppercase);
+        mQualityTextView = findViewById(R.id.quality_tv);
+        mPasswordLengthBar = findViewById(R.id.password_length);
+        mPasswordLength = findViewById(R.id.tv_length);
+        checkUppercase = findViewById(R.id.check_uppercase);
+        checkNumbers = findViewById(R.id.check_numbers);
+        checkSpecialSymbols = findViewById(R.id.check_special_symbols);
+        generatePasswordButton = findViewById(R.id.generate_password_button);
+        generatedPassword = findViewById(R.id.new_password);
+        copyNewPassword = findViewById(R.id.button_copy_new_password);
+        newPassword = findViewById(R.id.new_password);
     }
 }

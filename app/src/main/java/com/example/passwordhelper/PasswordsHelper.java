@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class PasswordsHelper {
 
+    private static final String RANDOM_PASSWORD_STRINGS = "abcdefghijklmnopqrstuvxyz";
+    public static final String NUMBERS = "0123456789";
     private HashMap<String, String> alphabet;
+    public static final String SPECIAL_SYMBOLS = "[]{}()<>*+-=!?^$|";
 
     public PasswordsHelper() {
         alphabet = new HashMap<>();
@@ -64,33 +67,30 @@ public class PasswordsHelper {
     }
 
     public String generatePassword(int n, boolean isUpperCase, boolean isNumber, boolean iSpecial) {   //, boolean isNumber, boolean isSpecial
-        String randomPassword = "abcdefghijklmnopqrstuvxyz";
-        String numbers = "0123456789";
-        String specialSymbols = "[]{}()<>*+-=!?^$|";
         int random;
 
 //        String randomUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789";
         StringBuilder builder = new StringBuilder(n);
         for (int i = 0; i < n; i++) {
-            int index = (int) (randomPassword.length() * Math.random());
+            int index = (int) (RANDOM_PASSWORD_STRINGS.length() * Math.random());
 
             if (isUpperCase) {
-                String upper = randomPassword.toUpperCase();
+                String upper = RANDOM_PASSWORD_STRINGS.toUpperCase();
                 builder.append(upper.charAt(index));
             } else if (isNumber) {
                 random = (int) (10 * Math.random());
-                builder.append(numbers.charAt(random));
-                builder.append(randomPassword.charAt(index));
+                builder.append(NUMBERS.charAt(random));
+                builder.append(RANDOM_PASSWORD_STRINGS.charAt(index));
 //            } else if (isNumber && isUpperCase){
 //                int random = (int) (10 * Math.random());
 //                builder.append(numbers.charAt(random));
 //                builder.append(randomPassword.charAt(index)).toString().toUpperCase();
             } else if (iSpecial) {
                 random = (int) (10 * Math.random());
-                builder.append(specialSymbols.charAt(random));
-                builder.append(randomPassword.charAt(index));
+                builder.append(SPECIAL_SYMBOLS.charAt(random));
+                builder.append(RANDOM_PASSWORD_STRINGS.charAt(index));
             } else {
-                builder.append(randomPassword.charAt(index));
+                builder.append(RANDOM_PASSWORD_STRINGS.charAt(index));
                 Log.d("PasswordHelper", isUpperCase + "");
             }
         }

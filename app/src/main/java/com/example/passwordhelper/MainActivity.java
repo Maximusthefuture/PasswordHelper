@@ -50,9 +50,7 @@ public class MainActivity extends Activity {
         copyNewPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                manager.setPrimaryClip(ClipData.newPlainText(MainActivity.this.getString(R.string.new_password), newPassword.getText()));
-                Toast.makeText(MainActivity.this, R.string.copy_text, Toast.LENGTH_SHORT).show();
+                copyClipboad(R.string.new_password, newPassword);
             }
         });
 
@@ -123,9 +121,7 @@ public class MainActivity extends Activity {
         mButtonCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                manager.setPrimaryClip(ClipData.newPlainText(MainActivity.this.getString(R.string.clipboard_title), mResultTextView.getText()));
-                Toast.makeText(MainActivity.this, R.string.copy_text, Toast.LENGTH_SHORT).show();
+                copyClipboad(R.string.clipboard_title, mResultTextView);
             }
 
 
@@ -173,6 +169,12 @@ public class MainActivity extends Activity {
 
             }
         });
+    }
+
+    private void copyClipboad(int p, TextView mResultTextView) {
+        ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        manager.setPrimaryClip(ClipData.newPlainText(MainActivity.this.getString(p), mResultTextView.getText()));
+        Toast.makeText(MainActivity.this, R.string.copy_text, Toast.LENGTH_SHORT).show();
     }
 
     private void init() {
